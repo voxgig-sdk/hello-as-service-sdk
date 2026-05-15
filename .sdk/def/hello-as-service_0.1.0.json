@@ -1,0 +1,160 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Hello as Service",
+    "description": "This API allows developers to greet visitors in their native language by utilizing their IP address or browser language settings. By making a simple API call, you can receive localized greetings based on the user's location or language preferences.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Documentation",
+      "url": "https://hellosalut.stefanbohacek.dev/hello/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://hellosalut.stefanbohacek.dev",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get localized greeting",
+        "description": "Returns a greeting in the user's native language based on IP address, language code, or country code",
+        "operationId": "getGreeting",
+        "tags": [
+          "Greetings"
+        ],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "description": "IP address to determine the user's location and return appropriate greeting",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "8.8.8.8"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Language code (ISO 639-1) to return greeting in specific language",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "fr"
+            }
+          },
+          {
+            "name": "cc",
+            "in": "query",
+            "description": "Country code (ISO 3166-1 alpha-2) to return greeting for specific country",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with localized greeting",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hello": {
+                      "type": "string",
+                      "description": "The greeting in the requested or detected language",
+                      "example": "Hello"
+                    },
+                    "code": {
+                      "type": "string",
+                      "description": "Language code of the returned greeting",
+                      "example": "en"
+                    },
+                    "ip": {
+                      "type": "string",
+                      "description": "IP address used for the request (if applicable)",
+                      "example": "8.8.8.8"
+                    },
+                    "cc": {
+                      "type": "string",
+                      "description": "Country code detected or used",
+                      "example": "US"
+                    }
+                  }
+                },
+                "examples": {
+                  "english": {
+                    "summary": "English greeting",
+                    "value": {
+                      "hello": "Hello",
+                      "code": "en",
+                      "cc": "US"
+                    }
+                  },
+                  "french": {
+                    "summary": "French greeting",
+                    "value": {
+                      "hello": "Bonjour",
+                      "code": "fr",
+                      "cc": "FR"
+                    }
+                  },
+                  "spanish": {
+                    "summary": "Spanish greeting",
+                    "value": {
+                      "hello": "Hola",
+                      "code": "es",
+                      "cc": "ES"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid parameter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Greetings",
+      "description": "Operations for retrieving localized greetings"
+    }
+  ]
+}

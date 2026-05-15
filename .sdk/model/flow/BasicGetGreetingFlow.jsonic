@@ -1,0 +1,28 @@
+# BasicGetGreetingFlow
+
+main: kit: flow: BasicGetGreetingFlow:
+{
+  entity: "get_greeting",
+  kind: "basic",
+  name: "BasicGetGreetingFlow",
+  step: [
+    {
+      input: {
+        ref: "get_greeting_ref01",
+        srcdatavar: "get_greeting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-get_greeting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetGreetingFlow"
+}

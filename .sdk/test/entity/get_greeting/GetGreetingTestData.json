@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "get_greeting": {
+      "GET_GREETING00": {
+        "cc": "s28",
+        "code": "s29",
+        "hello": "s2a",
+        "ip": "s2b"
+      },
+      "GET_GREETING01": {
+        "cc": "s50",
+        "code": "s51",
+        "hello": "s52",
+        "ip": "s53"
+      },
+      "GET_GREETING02": {
+        "cc": "s78",
+        "code": "s79",
+        "hello": "s7a",
+        "ip": "s7b"
+      }
+    }
+  },
+  "new": {
+    "get_greeting": {
+      "get_greeting_ref01": {
+        "cc": "sa0",
+        "code": "sa1",
+        "hello": "sa2",
+        "ip": "sa3"
+      }
+    }
+  }
+}

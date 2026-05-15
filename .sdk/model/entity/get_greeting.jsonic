@@ -1,0 +1,84 @@
+# Entity: get_greeting
+
+main: kit: entity: get_greeting: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cc"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hello"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ip"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_greeting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "US"
+                kind: "query"
+                name: "cc"
+                orig: "cc"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "8.8.8.8"
+                kind: "query"
+                name: "ip"
+                orig: "ip"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "fr"
+                kind: "query"
+                name: "lang"
+                orig: "lang"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "cc"
+              "ip"
+              "lang"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

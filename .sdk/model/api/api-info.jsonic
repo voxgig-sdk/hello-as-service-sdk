@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "API Documentation"
+        url: "https://hellosalut.stefanbohacek.dev/hello/"
+      }
+      description: "This API allows developers to greet visitors in their native language by utilizing their IP address or browser language settings. By making a simple API call, you can receive localized greetings based on the user's location or language preferences."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://hellosalut.stefanbohacek.dev"
+        }
+      ]
+      title: "Hello as Service"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
