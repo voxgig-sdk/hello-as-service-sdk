@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hello-as-service-sdk/core"
+import "github.com/voxgig-sdk/hello-as-service-sdk/go/core"
 
 func resultBodyUtil(ctx *core.Context) *core.Result {
 	response := ctx.Response

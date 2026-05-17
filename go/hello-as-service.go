@@ -1,10 +1,10 @@
 package voxgighelloasservicesdk
 
 import (
-	"github.com/voxgig-sdk/hello-as-service-sdk/core"
-	"github.com/voxgig-sdk/hello-as-service-sdk/entity"
-	"github.com/voxgig-sdk/hello-as-service-sdk/feature"
-	_ "github.com/voxgig-sdk/hello-as-service-sdk/utility"
+	"github.com/voxgig-sdk/hello-as-service-sdk/go/core"
+	"github.com/voxgig-sdk/hello-as-service-sdk/go/entity"
+	"github.com/voxgig-sdk/hello-as-service-sdk/go/feature"
+	_ "github.com/voxgig-sdk/hello-as-service-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

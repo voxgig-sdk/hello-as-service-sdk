@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hello-as-service-sdk/core"
+import "github.com/voxgig-sdk/hello-as-service-sdk/go/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

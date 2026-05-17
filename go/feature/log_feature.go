@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/hello-as-service-sdk/core"
+	"github.com/voxgig-sdk/hello-as-service-sdk/go/core"
 )
 
 type LogFeature struct {

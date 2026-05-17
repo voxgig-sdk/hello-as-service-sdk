@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hello-as-service-sdk/core"
+import "github.com/voxgig-sdk/hello-as-service-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

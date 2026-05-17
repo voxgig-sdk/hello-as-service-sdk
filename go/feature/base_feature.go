@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/hello-as-service-sdk/core"
+	"github.com/voxgig-sdk/hello-as-service-sdk/go/core"
 )
 
 type BaseFeature struct {

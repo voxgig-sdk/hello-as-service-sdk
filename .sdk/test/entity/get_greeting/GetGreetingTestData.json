@@ -5,19 +5,22 @@
         "cc": "s28",
         "code": "s29",
         "hello": "s2a",
-        "ip": "s2b"
+        "ip": "s2b",
+        "id": "GET_GREETING00"
       },
       "GET_GREETING01": {
         "cc": "s50",
         "code": "s51",
         "hello": "s52",
-        "ip": "s53"
+        "ip": "s53",
+        "id": "GET_GREETING01"
       },
       "GET_GREETING02": {
         "cc": "s78",
         "code": "s79",
         "hello": "s7a",
-        "ip": "s7b"
+        "ip": "s7b",
+        "id": "GET_GREETING02"
       }
     }
   },
