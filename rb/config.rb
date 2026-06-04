@@ -15,9 +15,6 @@ module HelloAsServiceConfig
       },
       "options" => {
         "base" => "https://hellosalut.stefanbohacek.dev",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

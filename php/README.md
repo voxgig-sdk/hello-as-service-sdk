@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'helloasservice_sdk.php';
 
-$client = new HelloAsServiceSDK([
-    "apikey" => getenv("HELLO-AS-SERVICE_APIKEY"),
-]);
+$client = new HelloAsServiceSDK([]);
 ```
 
 ### 3. Load a getgreeting
@@ -113,7 +111,6 @@ Create a `.env.local` file at the project root:
 
 ```
 HELLO-AS-SERVICE_TEST_LIVE=TRUE
-HELLO-AS-SERVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -136,7 +133,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
