@@ -10,7 +10,7 @@ The TypeScript SDK for the HelloAsService API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install hello-as-service
+npm install @voxgig-sdk/hello-as-service
 ```
 ## Tutorial: your first API call
 

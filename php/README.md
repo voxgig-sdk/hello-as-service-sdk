@@ -10,7 +10,7 @@ The PHP SDK for the HelloAsService API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/hello-as-service-sdk
+composer require voxgig-sdk/hello-as-service
 ```
 
 

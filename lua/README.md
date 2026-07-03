@@ -10,7 +10,7 @@ The Lua SDK for the HelloAsService API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install hello-as-service-sdk
+luarocks install voxgig-sdk-hello-as-service
 ```
 
 If the module is not yet published, add the source directory to

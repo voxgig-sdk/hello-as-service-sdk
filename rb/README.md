@@ -10,13 +10,13 @@ The Ruby SDK for the HelloAsService API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install hello-as-service-sdk
+gem install voxgig-sdk-hello-as-service
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "hello-as-service-sdk"
+gem "voxgig-sdk-hello-as-service"
 ```
 
 Then run:

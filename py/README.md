@@ -10,7 +10,7 @@ The Python SDK for the HelloAsService API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install hello-as-service-sdk
+pip install voxgig-sdk-hello-as-service
 ```
 
 Or install from source:

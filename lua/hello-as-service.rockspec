@@ -8,12 +8,14 @@ source = {
   dir = "hello-as-service-sdk/lua"
 }
 description = {
-  summary = "HelloAsService SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Hello as Service public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/hello-as-service-sdk",
+  issues_url = "https://github.com/voxgig-sdk/hello-as-service-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "hello-as-service" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
