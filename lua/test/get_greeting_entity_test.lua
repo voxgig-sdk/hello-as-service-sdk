@@ -91,6 +91,7 @@ function get_greeting_basic_setup(extra)
     ["HELLOASSERVICE_TEST_GET_GREETING_ENTID"] = idmap,
     ["HELLOASSERVICE_TEST_LIVE"] = "FALSE",
     ["HELLOASSERVICE_TEST_EXPLAIN"] = "FALSE",
+    ["HELLOASSERVICE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function get_greeting_basic_setup(extra)
   if env["HELLOASSERVICE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["HELLOASSERVICE_APIKEY"],
       },
       extra or {},
     })

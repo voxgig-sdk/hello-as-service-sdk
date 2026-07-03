@@ -85,6 +85,7 @@ function get_greeting_basic_setup($extra)
         "HELLOASSERVICE_TEST_GET_GREETING_ENTID" => $idmap,
         "HELLOASSERVICE_TEST_LIVE" => "FALSE",
         "HELLOASSERVICE_TEST_EXPLAIN" => "FALSE",
+        "HELLOASSERVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function get_greeting_basic_setup($extra)
     if ($env["HELLOASSERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["HELLOASSERVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

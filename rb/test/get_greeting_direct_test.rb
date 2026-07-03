@@ -61,12 +61,14 @@ def get_greeting_direct_setup(mockres)
   env = Runner.env_override({
     "HELLOASSERVICE_TEST_GET_GREETING_ENTID" => {},
     "HELLOASSERVICE_TEST_LIVE" => "FALSE",
+    "HELLOASSERVICE_APIKEY" => "NONE",
   })
 
   live = env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["HELLOASSERVICE_APIKEY"],
     }
     client = HelloAsServiceSDK.new(merged_opts)
     return {

@@ -17,25 +17,7 @@ main: {
       ]
       title: "Hello as Service"
       version: "1.0.0"
-      tagline: "Greet visitors in their native language based on IP address or browser language settings"
-      homepage: "https://hellosalut.stefanbohacek.dev"
-      docs_url: "https://freepublicapis.com/hello-as-service"
-      license_short: "No licence specified by the provider."
-      license_md: `- No explicit licence is published by the API provider.
-- The service is a personal project by Stefan Bohacek; review the project page before redistributing responses.
-- The community catalogue currently reports the upstream as non-functional, so availability is not guaranteed.`
-      about_md: `Hello Salut is a small public API by [Stefan Bohacek](https://stefanbohacek.com) that returns a localised greeting ("hello") in the visitor's native language. It is designed to be dropped into a webpage or app to give a friendly, language-aware welcome without the caller having to ship a translations table.
-
-What you get from the API:
-
-- A localised greeting derived from a supplied IP address, or from the caller's browser language settings.
-- A simple GET endpoint at the server root that accepts an \`ip\` query parameter, e.g. \`https://hellosalut.stefanbohacek.dev/?ip=89.120.120.120\`.
-
-The service has no authentication and no published rate limits. The community catalogue on freepublicapis.com reports CORS as disabled and the API as currently unreachable, so callers should be prepared for downtime and proxy requests server-side if needed.`
-      entity_desc: {
-        get_greeting: "Represents the localised greeting lookup at the server root (`GET /`), accepting an `ip` query parameter or falling back to the request's browser language."
-      }
-      auth: false
     }
   }
 }
+

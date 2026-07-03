@@ -117,6 +117,7 @@ func get_greetingBasicSetup(extra map[string]any) *entityTestSetup {
 		"HELLOASSERVICE_TEST_GET_GREETING_ENTID": idmap,
 		"HELLOASSERVICE_TEST_LIVE":      "FALSE",
 		"HELLOASSERVICE_TEST_EXPLAIN":   "FALSE",
+		"HELLOASSERVICE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["HELLOASSERVICE_TEST_GET_GREETING_ENTID"])
@@ -127,6 +128,7 @@ func get_greetingBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["HELLOASSERVICE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["HELLOASSERVICE_APIKEY"],
 			},
 			extra,
 		})

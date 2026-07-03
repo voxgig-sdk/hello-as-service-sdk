@@ -15,6 +15,9 @@ module HelloAsServiceConfig
       },
       "options" => {
         "base" => "https://hellosalut.stefanbohacek.dev",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -26,73 +29,76 @@ module HelloAsServiceConfig
         "get_greeting" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "cc",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "code",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "hello",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 2,
             },
             {
+              "active" => true,
               "name" => "ip",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 3,
             },
           ],
           "name" => "get_greeting",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "query" => [
                       {
+                        "active" => true,
                         "example" => "US",
                         "kind" => "query",
                         "name" => "cc",
                         "orig" => "cc",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "example" => "8.8.8.8",
                         "kind" => "query",
                         "name" => "ip",
                         "orig" => "ip",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                       {
+                        "active" => true,
                         "example" => "fr",
                         "kind" => "query",
                         "name" => "lang",
                         "orig" => "lang",
                         "reqd" => false,
                         "type" => "`$STRING`",
-                        "active" => true,
                       },
                     ],
                   },
                   "method" => "GET",
                   "orig" => "/",
+                  "parts" => [],
                   "select" => {
                     "exist" => [
                       "cc",
@@ -104,12 +110,9 @@ module HelloAsServiceConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "parts" => [],
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },

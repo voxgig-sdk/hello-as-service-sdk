@@ -1,19 +1,8 @@
 # HelloAsService SDK
 
-Greet visitors in their native language based on IP address or browser language settings
+Hello as Service client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Hello as Service
-
-Hello Salut is a small public API by [Stefan Bohacek](https://stefanbohacek.com) that returns a localised greeting ("hello") in the visitor's native language. It is designed to be dropped into a webpage or app to give a friendly, language-aware welcome without the caller having to ship a translations table.
-
-What you get from the API:
-
-- A localised greeting derived from a supplied IP address, or from the caller's browser language settings.
-- A simple GET endpoint at the server root that accepts an `ip` query parameter, e.g. `https://hellosalut.stefanbohacek.dev/?ip=89.120.120.120`.
-
-The service has no authentication and no published rate limits. The community catalogue on freepublicapis.com reports CORS as disabled and the API as currently unreachable, so callers should be prepared for downtime and proxy requests server-side if needed.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install hello-as-service-sdk
 luarocks install hello-as-service-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { HelloAsServiceSDK } from 'hello-as-service'
 
-const client = new HelloAsServiceSDK({})
+const client = new HelloAsServiceSDK({
+  apikey: process.env.HELLO-AS-SERVICE_APIKEY,
+})
 
+// Load getgreeting data
+const getgreeting = await client.GetGreeting().load({})
+console.log(getgreeting.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetGreeting** | Represents the localised greeting lookup at the server root (`GET /`), accepting an `ip` query parameter or falling back to the request's browser language. | `/` |
+| **GetGreeting** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from helloasservice_sdk import HelloAsServiceSDK
 
-client = HelloAsServiceSDK({})
+client = HelloAsServiceSDK({
+    "apikey": os.environ.get("HELLO-AS-SERVICE_APIKEY"),
+})
 
 
 # Load a specific getgreeting
-getgreeting, err = client.GetGreeting(None).load(
-    {"id": "example_id"}, None
-)
+getgreeting, err = client.GetGreeting().load({"id": "example_id"})
+print(getgreeting)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ getgreeting, err = client.GetGreeting(None).load(
 <?php
 require_once 'helloasservice_sdk.php';
 
-$client = new HelloAsServiceSDK([]);
+$client = new HelloAsServiceSDK([
+    "apikey" => getenv("HELLO-AS-SERVICE_APIKEY"),
+]);
 
 
 // Load a specific getgreeting
-[$getgreeting, $err] = $client->GetGreeting(null)->load(
-    ["id" => "example_id"], null
-);
+[$getgreeting, $err] = $client->GetGreeting()->load(["id" => "example_id"]);
+print_r($getgreeting);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new HelloAsServiceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/hello-as-service-sdk/go"
 
-client := sdk.NewHelloAsServiceSDK(map[string]any{})
+client := sdk.NewHelloAsServiceSDK(map[string]any{
+    "apikey": os.Getenv("HELLO-AS-SERVICE_APIKEY"),
+})
 
+// Load getgreeting data
+getgreeting, err := client.GetGreeting(nil).Load(map[string]any{}, nil)
+fmt.Println(getgreeting)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewHelloAsServiceSDK(map[string]any{})
 ```ruby
 require_relative "HelloAsService_sdk"
 
-client = HelloAsServiceSDK.new({})
+client = HelloAsServiceSDK.new({
+  "apikey" => ENV["HELLO-AS-SERVICE_APIKEY"],
+})
 
 
 # Load a specific getgreeting
-getgreeting, err = client.GetGreeting(nil).load(
-  { "id" => "example_id" }, nil
-)
+getgreeting, err = client.GetGreeting().load({ "id" => "example_id" })
+puts getgreeting
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ getgreeting, err = client.GetGreeting(nil).load(
 ```lua
 local sdk = require("hello-as-service_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("HELLO-AS-SERVICE_APIKEY"),
+})
 
 
 -- Load a specific getgreeting
-local getgreeting, err = client:GetGreeting(nil):load(
-  { id = "example_id" }, nil
-)
+local getgreeting, err = client:GetGreeting():load({ id = "example_id" })
+print(getgreeting)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.GetGreeting().load({ id: 'test01' })
 ### Python
 
 ```python
-client = HelloAsServiceSDK.test(None, None)
-result, err = client.GetGreeting(None).load(
-    {"id": "test01"}, None
-)
+client = HelloAsServiceSDK.test()
+result, err = client.GetGreeting().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = HelloAsServiceSDK::test(null, null);
-[$result, $err] = $client->GetGreeting(null)->load(
-    ["id" => "test01"], null
-);
+$client = HelloAsServiceSDK::test();
+[$result, $err] = $client->GetGreeting()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetGreeting(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.GetGreeting(nil).Load(
 ### Ruby
 
 ```ruby
-client = HelloAsServiceSDK.test(nil, nil)
-result, err = client.GetGreeting(nil).load(
-  { "id" => "test01" }, nil
-)
+client = HelloAsServiceSDK.test
+result, err = client.GetGreeting().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetGreeting(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetGreeting():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Hello as Service
-
-- Upstream: [https://hellosalut.stefanbohacek.dev](https://hellosalut.stefanbohacek.dev)
-- API docs: [https://freepublicapis.com/hello-as-service](https://freepublicapis.com/hello-as-service)
-
-- No explicit licence is published by the API provider.
-- The service is a personal project by Stefan Bohacek; review the project page before redistributing responses.
-- The community catalogue currently reports the upstream as non-functional, so availability is not guaranteed.
 
 ---
 

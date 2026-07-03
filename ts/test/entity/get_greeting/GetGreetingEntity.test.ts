@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID': idmap,
     'HELLO_AS_SERVICE_TEST_LIVE': 'FALSE',
     'HELLO_AS_SERVICE_TEST_EXPLAIN': 'FALSE',
+    'HELLO_AS_SERVICE_APIKEY': 'NONE',
   })
 
   idmap = env['HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new HelloAsServiceSDK(merge([
       {
+        apikey: env.HELLO_AS_SERVICE_APIKEY,
       },
       extra
     ]))

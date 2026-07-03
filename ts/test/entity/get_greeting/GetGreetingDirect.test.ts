@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'HELLOASSERVICE_TEST_GET_GREETING_ENTID': {},
     'HELLOASSERVICE_TEST_LIVE': 'FALSE',
+    'HELLOASSERVICE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.HELLOASSERVICE_TEST_LIVE
 
   if (live) {
     const client = new HelloAsServiceSDK({
+      apikey: env.HELLOASSERVICE_APIKEY,
     })
 
     let idmap: any = env['HELLOASSERVICE_TEST_GET_GREETING_ENTID']
