@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetGreetingLoadMatch
+---@param ctrl? table
+---@return GetGreeting
+---@return string? err
 function GetGreetingEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

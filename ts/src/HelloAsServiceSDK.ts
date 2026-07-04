@@ -2,6 +2,8 @@
 
 import { GetGreetingEntity } from './entity/GetGreetingEntity'
 
+export type * from './HelloAsServiceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class HelloAsServiceSDK {
 
 
 
+  _get_greeting?: GetGreetingEntity
+
+  // Idiomatic facade: `client.get_greeting.list()` / `client.get_greeting.load({ id })`.
+  get get_greeting(): GetGreetingEntity {
+    return (this._get_greeting ??= new GetGreetingEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_greeting` instead. */
   GetGreeting(data?: any) {
     const self = this
     return new GetGreetingEntity(self,data)

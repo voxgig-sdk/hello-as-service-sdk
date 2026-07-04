@@ -99,14 +99,12 @@ func get_greetingDirectSetup(mockres any) *get_greetingDirectSetupResult {
 	env := envOverride(map[string]any{
 		"HELLOASSERVICE_TEST_GET_GREETING_ENTID": map[string]any{},
 		"HELLOASSERVICE_TEST_LIVE":    "FALSE",
-		"HELLOASSERVICE_APIKEY":       "NONE",
 	})
 
 	live := env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["HELLOASSERVICE_APIKEY"],
 		}
 		client := sdk.NewHelloAsServiceSDK(mergedOpts)
 

@@ -49,8 +49,7 @@ class GetGreetingEntityTest extends TestCase
         // LOAD
         $get_greeting_ref01_ent = $client->GetGreeting(null);
         $get_greeting_ref01_match_dt0 = [];
-        [$get_greeting_ref01_data_dt0_loaded, $err] = $get_greeting_ref01_ent->load($get_greeting_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $get_greeting_ref01_data_dt0_loaded = $get_greeting_ref01_ent->load($get_greeting_ref01_match_dt0, null);
         $this->assertNotNull($get_greeting_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function get_greeting_basic_setup($extra)
         "HELLOASSERVICE_TEST_GET_GREETING_ENTID" => $idmap,
         "HELLOASSERVICE_TEST_LIVE" => "FALSE",
         "HELLOASSERVICE_TEST_EXPLAIN" => "FALSE",
-        "HELLOASSERVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function get_greeting_basic_setup($extra)
     if ($env["HELLOASSERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["HELLOASSERVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

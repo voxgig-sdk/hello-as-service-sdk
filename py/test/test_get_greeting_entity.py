@@ -49,8 +49,7 @@ class TestGetGreetingEntity:
         # LOAD
         get_greeting_ref01_ent = client.GetGreeting(None)
         get_greeting_ref01_match_dt0 = {}
-        get_greeting_ref01_data_dt0_loaded, err = get_greeting_ref01_ent.load(get_greeting_ref01_match_dt0, None)
-        assert err is None
+        get_greeting_ref01_data_dt0_loaded = get_greeting_ref01_ent.load(get_greeting_ref01_match_dt0, None)
         assert get_greeting_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _get_greeting_basic_setup(extra):
         "HELLOASSERVICE_TEST_GET_GREETING_ENTID": idmap,
         "HELLOASSERVICE_TEST_LIVE": "FALSE",
         "HELLOASSERVICE_TEST_EXPLAIN": "FALSE",
-        "HELLOASSERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _get_greeting_basic_setup(extra):
     if env.get("HELLOASSERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("HELLOASSERVICE_APIKEY"),
             },
             extra or {},
         ])

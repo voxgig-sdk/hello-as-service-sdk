@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `HelloAsServiceSDK.test()`.
 ## GetGreetingEntity
 
 ```ts
-const get_greeting = client.GetGreeting()
+const get_greeting = client.get_greeting
 ```
 
 ### Fields
@@ -129,7 +128,7 @@ const get_greeting = client.GetGreeting()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetGreeting().load({ id: 'get_greeting_id' })
+const result = await client.get_greeting.load({ id: 'get_greeting_id' })
 ```
 
 ### Common Methods

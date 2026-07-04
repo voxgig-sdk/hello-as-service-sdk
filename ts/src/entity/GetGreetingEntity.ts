@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetGreeting,
+  GetGreetingLoadMatch,
+} from '../HelloAsServiceTypes'
 
 // TODO: needs Entity superclass
-class GetGreetingEntity extends HelloAsServiceEntityBase {
+class GetGreetingEntity extends HelloAsServiceEntityBase<GetGreeting> {
 
   constructor(client: HelloAsServiceSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class GetGreetingEntity extends HelloAsServiceEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GetGreetingLoadMatch, ctrl?: Control): Promise<GetGreeting> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class GetGreetingEntity extends HelloAsServiceEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetGreeting> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

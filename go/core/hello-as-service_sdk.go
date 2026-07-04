@@ -245,6 +245,9 @@ func (sdk *HelloAsServiceSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// GetGreeting returns a GetGreeting entity bound to this client.
+// Idiomatic usage: client.GetGreeting(nil).List(nil, nil) or
+// client.GetGreeting(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HelloAsServiceSDK) GetGreeting(data map[string]any) HelloAsServiceEntity {
 	return NewGetGreetingEntityFunc(sdk, data)
 }

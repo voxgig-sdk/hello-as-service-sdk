@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:get_greeting():list() / client:get_greeting():load({ id = ... })
+function HelloAsServiceSDK:get_greeting(data)
+  local EntityMod = require("entity.get_greeting_entity")
+  if data == nil then
+    if self._get_greeting == nil then
+      self._get_greeting = EntityMod.new(self, nil)
+    end
+    return self._get_greeting
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_greeting() instead.
 function HelloAsServiceSDK:GetGreeting(data)
   local EntityMod = require("entity.get_greeting_entity")
   return EntityMod.new(self, data)
