@@ -208,13 +208,7 @@ class HelloAsServiceSDK
   end
 
 
-  # Idiomatic facade: client.get_greeting.list / client.get_greeting.load({ "id" => ... })
-  def get_greeting
-    require_relative 'entity/get_greeting_entity'
-    @get_greeting ||= GetGreetingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_greeting instead.
+  # Canonical facade: client.GetGreeting.list / client.GetGreeting.load({ "id" => ... })
   def GetGreeting(data = nil)
     require_relative 'entity/get_greeting_entity'
     GetGreetingEntity.new(self, data)

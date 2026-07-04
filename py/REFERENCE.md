@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GetGreetingEntity
 
 ```python
-get_greeting = client.get_greeting
+get_greeting = client.GetGreeting()
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ get_greeting = client.get_greeting
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_greeting.load({"id": "get_greeting_id"})
+result = client.GetGreeting().load({"id": "get_greeting_id"})
 ```
 
 ### Common Methods

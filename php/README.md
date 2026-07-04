@@ -33,9 +33,10 @@ $client = new HelloAsServiceSDK();
 
 ```php
 try {
-    $result = $client->getgreeting()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare GetGreeting record (throws on error).
+    $getgreeting = $client->GetGreeting()->load(["id" => "example_id"]);
+    print_r($getgreeting);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = HelloAsServiceSDK::test();
+$client = HelloAsServiceSDK::test([
+    "entity" => ["getgreeting" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->getgreeting()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$getgreeting = $client->GetGreeting()->load(["id" => "test01"]);
+print_r($getgreeting);
 ```
 
 ### Use a custom fetch function
@@ -226,7 +231,7 @@ API path: `/`
 
 ### GetGreeting
 
-Create an instance: `const get_greeting = client.get_greeting`
+Create an instance: `$get_greeting = $client->GetGreeting();`
 
 #### Operations
 
@@ -245,8 +250,9 @@ Create an instance: `const get_greeting = client.get_greeting`
 
 #### Example: Load
 
-```ts
-const get_greeting = await client.get_greeting.load({ id: 'get_greeting_id' })
+```php
+// load() returns the bare GetGreeting record (throws on error).
+$get_greeting = $client->GetGreeting()->load(["id" => "get_greeting_id"]);
 ```
 
 
@@ -321,7 +327,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getgreeting = $client->getgreeting();
+$getgreeting = $client->GetGreeting();
 $getgreeting->load(["id" => "example_id"]);
 
 // $getgreeting->dataGet() now returns the loaded getgreeting data

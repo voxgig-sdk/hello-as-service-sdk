@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## GetGreetingEntity
 
 ```ruby
-get_greeting = client.get_greeting
+get_greeting = client.GetGreeting
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ get_greeting = client.get_greeting
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_greeting.load({ "id" => "get_greeting_id" })
+result = client.GetGreeting.load({ "id" => "get_greeting_id" })
 ```
 
 ### Common Methods

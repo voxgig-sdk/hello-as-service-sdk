@@ -26,9 +26,9 @@ import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service'
 
 const client = new HelloAsServiceSDK()
 
-// Load getgreeting data
-const getgreeting = await client.getgreeting.load({})
-console.log(getgreeting.data)
+// Load getgreeting data (returns a GetGreeting)
+const getgreeting = await client.GetGreeting().load()
+console.log(getgreeting)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from helloasservice_sdk import HelloAsServiceSDK
 client = HelloAsServiceSDK()
 
 
-# Load a specific getgreeting
-getgreeting = client.getgreeting.load({"id": "example_id"})
+# Load a specific getgreeting (returns the record, raises on error)
+getgreeting = client.GetGreeting().load({"id": "example_id"})
 print(getgreeting)
 ```
 
@@ -98,8 +98,8 @@ require_once 'helloasservice_sdk.php';
 $client = new HelloAsServiceSDK();
 
 
-// Load a specific getgreeting
-$getgreeting = $client->getgreeting()->load(["id" => "example_id"]);
+// Load a specific getgreeting (returns the bare record; throws on error)
+$getgreeting = $client->GetGreeting()->load(["id" => "example_id"]);
 print_r($getgreeting);
 ```
 
@@ -123,8 +123,8 @@ require_relative "HelloAsService_sdk"
 client = HelloAsServiceSDK.new
 
 
-# Load a specific getgreeting
-getgreeting = client.getgreeting.load({ "id" => "example_id" })
+# Load a specific getgreeting (returns the bare record; raises on error)
+getgreeting = client.GetGreeting.load({ "id" => "example_id" })
 puts getgreeting
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific getgreeting
-local getgreeting, err = client:getgreeting():load({ id = "example_id" })
+local getgreeting, err = client:GetGreeting():load({ id = "example_id" })
 print(getgreeting)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = HelloAsServiceSDK.test()
-const result = await client.getgreeting.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getgreeting = await client.GetGreeting().load({ id: 'test01' })
+// getgreeting is a bare GetGreeting populated with mock data
+console.log(getgreeting)
 ```
 
 ### Python
 
 ```python
 client = HelloAsServiceSDK.test()
-result = client.getgreeting.load({"id": "test01"})
+getgreeting = client.GetGreeting().load({"id": "test01"})
+print(getgreeting)
 ```
 
 ### PHP
 
 ```php
-$client = HelloAsServiceSDK::test();
-$result = $client->getgreeting()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = HelloAsServiceSDK::test([
+    "entity" => ["getgreeting" => ["test01" => ["id" => "test01"]]],
+]);
+$getgreeting = $client->GetGreeting()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.GetGreeting(nil).Load(
 ### Ruby
 
 ```ruby
-client = HelloAsServiceSDK.test
-result = client.getgreeting.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = HelloAsServiceSDK.test({
+  "entity" => { "getgreeting" => { "test01" => { "id" => "test01" } } },
+})
+getgreeting = client.GetGreeting.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getgreeting():load({ id = "test01" })
+local result, err = client:GetGreeting():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

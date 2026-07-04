@@ -109,7 +109,7 @@ Alias for `HelloAsServiceSDK.test()`.
 ## GetGreetingEntity
 
 ```ts
-const get_greeting = client.get_greeting
+const get_greeting = client.GetGreeting()
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const get_greeting = client.get_greeting
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_greeting.load({ id: 'get_greeting_id' })
+const result = await client.GetGreeting().load({ id: 'get_greeting_id' })
 ```
 
 ### Common Methods

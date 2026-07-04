@@ -233,10 +233,10 @@ class HelloAsServiceSDK
 
     private $_get_greeting = null;
 
-    // Idiomatic facade: $client->get_greeting()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetGreeting() (PHP method
-    // names are case-insensitive).
-    public function get_greeting($data = null)
+    // Canonical facade: $client->GetGreeting()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_greeting()
+    // resolves here too.
+    public function GetGreeting($data = null)
     {
         require_once __DIR__ . '/entity/get_greeting_entity.php';
         if ($data === null) {

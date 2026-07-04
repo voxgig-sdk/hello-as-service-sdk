@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## GetGreetingEntity
 
 ```lua
-local get_greeting = client:get_greeting(nil)
+local get_greeting = client:GetGreeting(nil)
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ local get_greeting = client:get_greeting(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_greeting():load({ id = "get_greeting_id" })
+local result, err = client:GetGreeting():load({ id = "get_greeting_id" })
 ```
 
 ### Common Methods
