@@ -16,7 +16,6 @@ go build -o hello-as-service-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./hello-as-service-cli list get_greeting
 ./hello-as-service-cli load 1 get_greeting
 ./hello-as-service-cli load '{id:1}' get_greeting
 
@@ -28,9 +27,7 @@ go build -o hello-as-service-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

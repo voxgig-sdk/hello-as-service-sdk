@@ -97,10 +97,10 @@ get_greeting := client.GetGreeting(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `hello` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
+| `cc` | `string` | No |  |
+| `code` | `string` | No |  |
+| `hello` | `string` | No |  |
+| `ip` | `string` | No |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ get_greeting := client.GetGreeting(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetGreeting(nil).Load(map[string]any{"id": "get_greeting_id"}, nil)
+result, err := client.GetGreeting(nil).Load(nil, nil)
 ```
 
 ### Common Methods

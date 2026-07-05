@@ -116,10 +116,10 @@ const get_greeting = client.GetGreeting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `hello` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
+| `cc` | `string` | No |  |
+| `code` | `string` | No |  |
+| `hello` | `string` | No |  |
+| `ip` | `string` | No |  |
 
 ### Operations
 
@@ -128,7 +128,7 @@ const get_greeting = client.GetGreeting()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetGreeting().load({ id: 'get_greeting_id' })
+const result = await client.GetGreeting().load()
 ```
 
 ### Common Methods

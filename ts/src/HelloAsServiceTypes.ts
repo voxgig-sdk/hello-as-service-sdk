@@ -12,5 +12,10 @@ export interface GetGreeting {
   ip?: string
 }
 
-export type GetGreetingLoadMatch = Partial<GetGreeting>
+export interface GetGreetingLoadMatch {
+  cc?: string
+  code?: string
+  hello?: string
+  ip?: string
+}
 

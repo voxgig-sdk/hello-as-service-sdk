@@ -21,7 +21,7 @@ class GetGreeting
     public ?string $ip = null;
 }
 
-/** Match filter for GetGreeting#load (any subset of GetGreeting fields). */
+/** Request payload for GetGreeting#load. */
 class GetGreetingLoadMatch
 {
     public ?string $cc = null;

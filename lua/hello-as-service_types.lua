@@ -13,6 +13,10 @@
 ---@field ip? string
 
 ---@class GetGreetingLoadMatch
+---@field cc? string
+---@field code? string
+---@field hello? string
+---@field ip? string
 
 local M = {}
 

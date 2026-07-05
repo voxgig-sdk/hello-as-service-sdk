@@ -221,7 +221,7 @@ class HelloAsServiceSDK:
 
 
     def GetGreeting(self, data=None) -> "GetGreetingEntity":
-        """Entity factory: client.GetGreeting().list({}) / client.GetGreeting().load({"id": ...})."""
+        """Entity factory: client.GetGreeting().list() / client.GetGreeting().load({"id": ...})."""
         from entity.get_greeting_entity import GetGreetingEntity
         return GetGreetingEntity(self, data)
 

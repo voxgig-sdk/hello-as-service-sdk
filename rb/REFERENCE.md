@@ -8,7 +8,7 @@ Complete API reference for the HelloAsService Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'hello-as-service_sdk'
+require_relative 'HelloAsService_sdk'
 
 client = HelloAsServiceSDK.new(options)
 ```
@@ -93,10 +93,10 @@ get_greeting = client.GetGreeting
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `hello` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
+| `cc` | `String` | No |  |
+| `code` | `String` | No |  |
+| `hello` | `String` | No |  |
+| `ip` | `String` | No |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ get_greeting = client.GetGreeting
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetGreeting.load({ "id" => "get_greeting_id" })
+result = client.GetGreeting.load()
 ```
 
 ### Common Methods

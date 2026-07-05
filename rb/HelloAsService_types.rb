@@ -29,7 +29,7 @@ GetGreeting = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GetGreeting#load (any subset of GetGreeting fields).
+# Request payload for GetGreeting#load.
 #
 # @!attribute [rw] cc
 #   @return [String, nil]

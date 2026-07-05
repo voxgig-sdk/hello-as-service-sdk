@@ -8,7 +8,7 @@ Complete API reference for the HelloAsService Python SDK.
 ### Constructor
 
 ```python
-from hello-as-service_sdk import HelloAsServiceSDK
+from helloasservice_sdk import HelloAsServiceSDK
 
 client = HelloAsServiceSDK(options)
 ```
@@ -87,10 +87,10 @@ get_greeting = client.GetGreeting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `hello` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
+| `cc` | `str` | No |  |
+| `code` | `str` | No |  |
+| `hello` | `str` | No |  |
+| `ip` | `str` | No |  |
 
 ### Operations
 
@@ -99,7 +99,7 @@ get_greeting = client.GetGreeting()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GetGreeting().load({"id": "get_greeting_id"})
+result = client.GetGreeting().load()
 ```
 
 ### Common Methods

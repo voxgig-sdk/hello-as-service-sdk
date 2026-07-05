@@ -16,8 +16,7 @@ type GetGreeting struct {
 	Ip *string `json:"ip,omitempty"`
 }
 
-// GetGreetingLoadMatch mirrors the get_greeting fields as an all-optional match
-// filter (Go analog of Partial<GetGreeting>).
+// GetGreetingLoadMatch is the typed request payload for GetGreeting.LoadTyped.
 type GetGreetingLoadMatch struct {
 	Cc *string `json:"cc,omitempty"`
 	Code *string `json:"code,omitempty"`

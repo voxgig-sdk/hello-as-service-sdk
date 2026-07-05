@@ -8,7 +8,7 @@ Complete API reference for the HelloAsService PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/hello-as-service_sdk.php';
+require_once __DIR__ . '/helloasservice_sdk.php';
 
 $client = new HelloAsServiceSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = HelloAsServiceSDK::test();
 
 Create a new `GetGreetingEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): HelloAsServiceUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,10 +92,10 @@ $get_greeting = $client->GetGreeting();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `hello` | ``$STRING`` | No |  |
-| `ip` | ``$STRING`` | No |  |
+| `cc` | `string` | No |  |
+| `code` | `string` | No |  |
+| `hello` | `string` | No |  |
+| `ip` | `string` | No |  |
 
 ### Operations
 
@@ -104,24 +104,24 @@ $get_greeting = $client->GetGreeting();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GetGreeting()->load(["id" => "get_greeting_id"]);
+$result = $client->GetGreeting()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -130,7 +130,7 @@ Set the entity match criteria.
 Create a new `GetGreetingEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
