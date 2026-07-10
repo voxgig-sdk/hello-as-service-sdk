@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single getgreeting — the value is the loaded record.
-    getgreeting, err := client.GetGreeting(nil).Load(nil, nil)
+    // Load a single getGreeting — the value is the loaded record.
+    getGreeting, err := client.GetGreeting(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(getgreeting)
+    fmt.Println(getGreeting)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getgreeting, err := client.GetGreeting(nil).Load(
+getGreeting, err := client.GetGreeting(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getgreeting) // the returned mock data
+fmt.Println(getGreeting) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getgreeting, err := client.GetGreeting(nil).Load(nil, nil)
+    getGreeting, err := client.GetGreeting(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // getgreeting is the returned record
+    // getGreeting is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -274,7 +274,7 @@ API path: `/`
 
 ### GetGreeting
 
-Create an instance: `get_greeting := client.GetGreeting(nil)`
+Create an instance: `getGreeting := client.GetGreeting(nil)`
 
 #### Operations
 
@@ -294,11 +294,11 @@ Create an instance: `get_greeting := client.GetGreeting(nil)`
 #### Example: Load
 
 ```go
-get_greeting, err := client.GetGreeting(nil).Load(nil, nil)
+getGreeting, err := client.GetGreeting(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_greeting) // the loaded record
+fmt.Println(getGreeting) // the loaded record
 ```
 
 

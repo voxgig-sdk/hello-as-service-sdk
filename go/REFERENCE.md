@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## GetGreetingEntity
 
 ```go
-get_greeting := client.GetGreeting(nil)
+getGreeting := client.GetGreeting(nil)
+fmt.Println(getGreeting.GetName()) // "get_greeting"
 ```
 
 ### Fields
@@ -110,6 +111,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetGreeting(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

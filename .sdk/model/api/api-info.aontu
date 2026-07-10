@@ -16,9 +16,9 @@ main: {
           url: "https://hellosalut.stefanbohacek.dev"
         }
       ]
+      summary: "This API allows developers to greet visitors in their native language by utilizing their IP address or browser language settings."
       title: "Hello as Service"
       version: "1.0.0"
+      website: "https://hellosalut.stefanbohacek.dev"
     }
   }
-}
-
