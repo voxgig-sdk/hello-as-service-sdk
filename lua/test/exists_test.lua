@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- HelloAsService SDK exists test
 
 local sdk = require("hello-as-service_sdk")
 
