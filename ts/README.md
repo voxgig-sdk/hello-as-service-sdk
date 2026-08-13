@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = HelloAsServiceSDK.test()
 
 const getgreeting = await client.GetGreeting().load()
-// getgreeting is a bare entity populated with mock response data
+// getgreeting is the entity, populated with mock response data
+// — call getgreeting.data() for the record itself
 console.log(getgreeting)
 ```
 

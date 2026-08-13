@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# HelloAsService SDK exists test
 
 import pytest
 from helloasservice_sdk import HelloAsServiceSDK

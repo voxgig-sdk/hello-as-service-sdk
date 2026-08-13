@@ -44,7 +44,7 @@ func TestGetGreetingEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set HELLOASSERVICE_TEST_GET_GREETING_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -110,21 +110,21 @@ func get_greetingBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("HELLOASSERVICE_TEST_GET_GREETING_ENTID")
+	entidEnvRaw := os.Getenv("HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"HELLOASSERVICE_TEST_GET_GREETING_ENTID": idmap,
-		"HELLOASSERVICE_TEST_LIVE":      "FALSE",
-		"HELLOASSERVICE_TEST_EXPLAIN":   "FALSE",
+		"HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID": idmap,
+		"HELLO_AS_SERVICE_TEST_LIVE":      "FALSE",
+		"HELLO_AS_SERVICE_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["HELLOASSERVICE_TEST_GET_GREETING_ENTID"])
+	idmapResolved := core.ToMapAny(env["HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["HELLOASSERVICE_TEST_LIVE"] == "TRUE" {
+	if env["HELLO_AS_SERVICE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -133,13 +133,13 @@ func get_greetingBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewHelloAsServiceSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
+	live := env["HELLO_AS_SERVICE_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["HELLOASSERVICE_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["HELLO_AS_SERVICE_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

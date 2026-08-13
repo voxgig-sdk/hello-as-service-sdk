@@ -43,8 +43,8 @@ class HelloAsServiceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('HELLOASSERVICE_TEST_LIVE');
-        $override = self::getenv('HELLOASSERVICE_TEST_OVERRIDE');
+        $live = self::getenv('HELLO_AS_SERVICE_TEST_LIVE');
+        $override = self::getenv('HELLO_AS_SERVICE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class HelloAsServiceTestRunner
             }
         }
 
-        $explain = self::getenv('HELLOASSERVICE_TEST_EXPLAIN');
+        $explain = self::getenv('HELLO_AS_SERVICE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['HELLOASSERVICE_TEST_EXPLAIN'] = $explain;
+            $m['HELLO_AS_SERVICE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

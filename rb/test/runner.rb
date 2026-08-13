@@ -23,8 +23,8 @@ module HelloAsServiceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("HELLOASSERVICE_TEST_LIVE")
-    override = getenv("HELLOASSERVICE_TEST_OVERRIDE")
+    live = getenv("HELLO_AS_SERVICE_TEST_LIVE")
+    override = getenv("HELLO_AS_SERVICE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module HelloAsServiceTestRunner
       end
     end
 
-    explain = getenv("HELLOASSERVICE_TEST_EXPLAIN")
-    m["HELLOASSERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("HELLO_AS_SERVICE_TEST_EXPLAIN")
+    m["HELLO_AS_SERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -60,11 +60,11 @@ function get_greeting_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["HELLOASSERVICE_TEST_GET_GREETING_ENTID"] = {},
-    ["HELLOASSERVICE_TEST_LIVE"] = "FALSE",
+    ["HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID"] = {},
+    ["HELLO_AS_SERVICE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
+  local live = env["HELLO_AS_SERVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

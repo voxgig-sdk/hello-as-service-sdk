@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ HelloAsServiceUtility.registrar = ->(u) {
   u.prepare_params = HelloAsServiceUtilities::PrepareParams
   u.prepare_path = HelloAsServiceUtilities::PreparePath
   u.prepare_query = HelloAsServiceUtilities::PrepareQuery
+  u.graphql_body = HelloAsServiceUtilities::GraphqlBody
+  u.graphql_errors = HelloAsServiceUtilities::GraphqlErrors
   u.result_basic = HelloAsServiceUtilities::ResultBasic
   u.result_body = HelloAsServiceUtilities::ResultBody
   u.result_headers = HelloAsServiceUtilities::ResultHeaders

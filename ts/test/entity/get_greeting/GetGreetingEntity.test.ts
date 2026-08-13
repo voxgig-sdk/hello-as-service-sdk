@@ -26,8 +26,8 @@ import {
 describe('GetGreetingEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HELLOASSERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HELLOASSERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HELLO_AS_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HELLO_AS_SERVICE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HelloAsServiceSDK.test()
@@ -62,7 +62,7 @@ describe('GetGreetingEntity', async () => {
     // LOAD
     const get_greeting_ref01_ent = client.GetGreeting()
     const get_greeting_ref01_match_dt0: any = {}
-    const get_greeting_ref01_data_dt0 = await get_greeting_ref01_ent.load(get_greeting_ref01_match_dt0)
+    const get_greeting_ref01_data_dt0 = (await get_greeting_ref01_ent.load(get_greeting_ref01_match_dt0)).data()
     assert(null != get_greeting_ref01_data_dt0)
 
 

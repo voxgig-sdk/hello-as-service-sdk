@@ -19,11 +19,15 @@ import {
 describe('GetGreetingDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HELLOASSERVICE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HELLOASSERVICE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HELLO_AS_SERVICE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HELLO_AS_SERVICE_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new HelloAsServiceSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,17 +76,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'HELLOASSERVICE_TEST_GET_GREETING_ENTID': {},
-    'HELLOASSERVICE_TEST_LIVE': 'FALSE',
+    'HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID': {},
+    'HELLO_AS_SERVICE_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.HELLOASSERVICE_TEST_LIVE
+  const live = 'TRUE' === env.HELLO_AS_SERVICE_TEST_LIVE
 
   if (live) {
     const client = new HelloAsServiceSDK({
     })
 
-    let idmap: any = env['HELLOASSERVICE_TEST_GET_GREETING_ENTID']
+    let idmap: any = env['HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

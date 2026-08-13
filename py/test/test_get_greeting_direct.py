@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from helloasservice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from helloasservice_sdk import HelloAsServiceSDK
-from core import helpers
+from helloasservice_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _get_greeting_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "HELLOASSERVICE_TEST_GET_GREETING_ENTID": {},
-        "HELLOASSERVICE_TEST_LIVE": "FALSE",
+        "HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID": {},
+        "HELLO_AS_SERVICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("HELLOASSERVICE_TEST_LIVE") == "TRUE"
+    live = env.get("HELLO_AS_SERVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

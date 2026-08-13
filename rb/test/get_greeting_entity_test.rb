@@ -26,7 +26,7 @@ class GetGreetingEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set HELLOASSERVICE_TEST_GET_GREETING_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,22 +74,22 @@ def get_greeting_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["HELLOASSERVICE_TEST_GET_GREETING_ENTID"]
+  entid_env_raw = ENV["HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "HELLOASSERVICE_TEST_GET_GREETING_ENTID" => idmap,
-    "HELLOASSERVICE_TEST_LIVE" => "FALSE",
-    "HELLOASSERVICE_TEST_EXPLAIN" => "FALSE",
+    "HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID" => idmap,
+    "HELLO_AS_SERVICE_TEST_LIVE" => "FALSE",
+    "HELLO_AS_SERVICE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["HELLOASSERVICE_TEST_GET_GREETING_ENTID"])
+    env["HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
+  if env["HELLO_AS_SERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -98,13 +98,13 @@ def get_greeting_basic_setup(extra)
     client = HelloAsServiceSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["HELLOASSERVICE_TEST_LIVE"] == "TRUE"
+  live = env["HELLO_AS_SERVICE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["HELLOASSERVICE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["HELLO_AS_SERVICE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

@@ -16,11 +16,11 @@
 import pytest
 
 from helloasservice_sdk import HelloAsServiceSDK
-from core.error import HelloAsServiceError
-from core.result import HelloAsServiceResult
-from core.response import HelloAsServiceResponse
-from core.spec import HelloAsServiceSpec
-from feature.base_feature import HelloAsServiceBaseFeature
+from helloasservice_sdk.core.error import HelloAsServiceError
+from helloasservice_sdk.core.result import HelloAsServiceResult
+from helloasservice_sdk.core.response import HelloAsServiceResponse
+from helloasservice_sdk.core.spec import HelloAsServiceSpec
+from helloasservice_sdk.feature.base_feature import HelloAsServiceBaseFeature
 
 
 def _client():
