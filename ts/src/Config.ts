@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://hellosalut.stefanbohacek.dev',
+    base: "https://hellosalut.stefanbohacek.dev",
 
     headers: {
       "content-type": "application/json"
@@ -55,32 +55,20 @@ class Config {
     "get_greeting": {
       "fields": [
         {
-          "active": true,
           "name": "cc",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "code",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "hello",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ip",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "get_greeting",
@@ -90,34 +78,27 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": "US",
                     "kind": "query",
                     "name": "cc",
                     "orig": "cc",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "8.8.8.8",
                     "kind": "query",
                     "name": "ip",
                     "orig": "ip",
-                    "reqd": false,
                     "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "fr",
                     "kind": "query",
                     "name": "lang",
                     "orig": "lang",
-                    "reqd": false,
                     "type": "`$STRING`"
                   }
                 ]
@@ -136,11 +117,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

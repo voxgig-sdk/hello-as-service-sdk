@@ -28,7 +28,7 @@ class HelloAsServiceSDK
     utility = HelloAsServiceUtility.new
     @_utility = utility
 
-    config = HelloAsServiceConfig.make_config
+    config = HelloAsServiceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

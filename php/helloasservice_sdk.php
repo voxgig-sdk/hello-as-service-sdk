@@ -40,7 +40,7 @@ class HelloAsServiceSDK
         $utility = new HelloAsServiceUtility();
         $this->_utility = $utility;
 
-        $config = HelloAsServiceConfig::make_config();
+        $config = HelloAsServiceConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
