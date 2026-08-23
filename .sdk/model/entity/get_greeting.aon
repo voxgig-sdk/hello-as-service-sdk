@@ -8,21 +8,25 @@ main: kit: entity: get_greeting: {
     {
       name: "cc"
       req: false
+      short: "Country code detected or used"
       type: "`$STRING`"
     }
     {
       name: "code"
       req: false
+      short: "Language code of the returned greeting"
       type: "`$STRING`"
     }
     {
       name: "hello"
       req: false
+      short: "The greeting in the requested or detected language"
       type: "`$STRING`"
     }
     {
       name: "ip"
       req: false
+      short: "IP address used for the request (if applicable)"
       type: "`$STRING`"
     }
   ]

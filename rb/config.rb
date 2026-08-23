@@ -19,6 +19,9 @@ module HelloAsServiceConfig
     {
       "main" => {
         "name" => "HelloAsService",
+        "slug" => "hello-as-service",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,18 +44,22 @@ module HelloAsServiceConfig
           "fields" => [
             {
               "name" => "cc",
+              "short" => "Country code detected or used",
               "type" => "`$STRING`",
             },
             {
               "name" => "code",
+              "short" => "Language code of the returned greeting",
               "type" => "`$STRING`",
             },
             {
               "name" => "hello",
+              "short" => "The greeting in the requested or detected language",
               "type" => "`$STRING`",
             },
             {
               "name" => "ip",
+              "short" => "IP address used for the request (if applicable)",
               "type" => "`$STRING`",
             },
           ],

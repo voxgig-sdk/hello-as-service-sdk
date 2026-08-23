@@ -245,10 +245,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `cc` |  |
-| `code` |  |
-| `hello` |  |
-| `ip` |  |
+| `cc` | Country code detected or used |
+| `code` | Language code of the returned greeting |
+| `hello` | The greeting in the requested or detected language |
+| `ip` | IP address used for the request (if applicable) |
 
 Operations: Load.
 
@@ -273,10 +273,10 @@ Create an instance: `$get_greeting = $client->GetGreeting();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cc` | `string` |  |
-| `code` | `string` |  |
-| `hello` | `string` |  |
-| `ip` | `string` |  |
+| `cc` | `string` | Country code detected or used |
+| `code` | `string` | Language code of the returned greeting |
+| `hello` | `string` | The greeting in the requested or detected language |
+| `ip` | `string` | IP address used for the request (if applicable) |
 
 #### Example: Load
 

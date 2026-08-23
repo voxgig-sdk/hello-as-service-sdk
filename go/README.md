@@ -6,7 +6,7 @@ The Golang SDK for the HelloAsService API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetGreeting(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,10 +258,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"cc"` |  |
-| `"code"` |  |
-| `"hello"` |  |
-| `"ip"` |  |
+| `"cc"` | Country code detected or used |
+| `"code"` | Language code of the returned greeting |
+| `"hello"` | The greeting in the requested or detected language |
+| `"ip"` | IP address used for the request (if applicable) |
 
 Operations: Load.
 
@@ -286,10 +286,10 @@ Create an instance: `getGreeting := client.GetGreeting(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cc` | `string` |  |
-| `code` | `string` |  |
-| `hello` | `string` |  |
-| `ip` | `string` |  |
+| `cc` | `string` | Country code detected or used |
+| `code` | `string` | Language code of the returned greeting |
+| `hello` | `string` | The greeting in the requested or detected language |
+| `ip` | `string` | IP address used for the request (if applicable) |
 
 #### Example: Load
 

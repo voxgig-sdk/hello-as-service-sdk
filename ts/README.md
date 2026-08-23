@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,10 +285,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `cc` |  |
-| `code` |  |
-| `hello` |  |
-| `ip` |  |
+| `cc` | Country code detected or used |
+| `code` | Language code of the returned greeting |
+| `hello` | The greeting in the requested or detected language |
+| `ip` | IP address used for the request (if applicable) |
 
 Operations: load.
 
@@ -313,10 +313,10 @@ Create an instance: `const get_greeting = client.GetGreeting()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cc` | `string` |  |
-| `code` | `string` |  |
-| `hello` | `string` |  |
-| `ip` | `string` |  |
+| `cc` | `string` | Country code detected or used |
+| `code` | `string` | Language code of the returned greeting |
+| `hello` | `string` | The greeting in the requested or detected language |
+| `ip` | `string` | IP address used for the request (if applicable) |
 
 #### Example: Load
 

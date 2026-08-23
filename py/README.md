@@ -241,10 +241,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `cc` |  |
-| `code` |  |
-| `hello` |  |
-| `ip` |  |
+| `cc` | Country code detected or used |
+| `code` | Language code of the returned greeting |
+| `hello` | The greeting in the requested or detected language |
+| `ip` | IP address used for the request (if applicable) |
 
 Operations: Load.
 
@@ -269,10 +269,10 @@ Create an instance: `get_greeting = client.GetGreeting()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cc` | `str` |  |
-| `code` | `str` |  |
-| `hello` | `str` |  |
-| `ip` | `str` |  |
+| `cc` | `str` | Country code detected or used |
+| `code` | `str` | Language code of the returned greeting |
+| `hello` | `str` | The greeting in the requested or detected language |
+| `ip` | `str` | IP address used for the request (if applicable) |
 
 #### Example: Load
 

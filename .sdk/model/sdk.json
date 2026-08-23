@@ -36,24 +36,28 @@
               "active": true,
               "name": "cc",
               "req": false,
+              "short": "Country code detected or used",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "code",
               "req": false,
+              "short": "Language code of the returned greeting",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "hello",
               "req": false,
+              "short": "The greeting in the requested or detected language",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ip",
               "req": false,
+              "short": "IP address used for the request (if applicable)",
               "type": "`$STRING`"
             }
           ],

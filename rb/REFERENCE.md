@@ -93,10 +93,10 @@ get_greeting = client.GetGreeting
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | `String` | No |  |
-| `code` | `String` | No |  |
-| `hello` | `String` | No |  |
-| `ip` | `String` | No |  |
+| `cc` | `String` | No | Country code detected or used |
+| `code` | `String` | No | Language code of the returned greeting |
+| `hello` | `String` | No | The greeting in the requested or detected language |
+| `ip` | `String` | No | IP address used for the request (if applicable) |
 
 ### Operations
 

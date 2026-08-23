@@ -235,10 +235,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `cc` |  |
-| `code` |  |
-| `hello` |  |
-| `ip` |  |
+| `cc` | Country code detected or used |
+| `code` | Language code of the returned greeting |
+| `hello` | The greeting in the requested or detected language |
+| `ip` | IP address used for the request (if applicable) |
 
 Operations: Load.
 
@@ -263,10 +263,10 @@ Create an instance: `get_greeting = client.GetGreeting`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cc` | `String` |  |
-| `code` | `String` |  |
-| `hello` | `String` |  |
-| `ip` | `String` |  |
+| `cc` | `String` | Country code detected or used |
+| `code` | `String` | Language code of the returned greeting |
+| `hello` | `String` | The greeting in the requested or detected language |
+| `ip` | `String` | IP address used for the request (if applicable) |
 
 #### Example: Load
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "HelloAsService",
+			"slug": "hello-as-service",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,18 +36,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cc",
+						"short": "Country code detected or used",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "code",
+						"short": "Language code of the returned greeting",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "hello",
+						"short": "The greeting in the requested or detected language",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ip",
+						"short": "IP address used for the request (if applicable)",
 						"type": "`$STRING`",
 					},
 				},

@@ -90,10 +90,10 @@ local get_greeting = client:GetGreeting(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cc` | `string` | No |  |
-| `code` | `string` | No |  |
-| `hello` | `string` | No |  |
-| `ip` | `string` | No |  |
+| `cc` | `string` | No | Country code detected or used |
+| `code` | `string` | No | Language code of the returned greeting |
+| `hello` | `string` | No | The greeting in the requested or detected language |
+| `ip` | `string` | No | IP address used for the request (if applicable) |
 
 ### Operations
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'HelloAsService',
+        slug: "hello-as-service",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,18 +67,22 @@ class Config {
       "fields": [
         {
           "name": "cc",
+          "short": "Country code detected or used",
           "type": "`$STRING`"
         },
         {
           "name": "code",
+          "short": "Language code of the returned greeting",
           "type": "`$STRING`"
         },
         {
           "name": "hello",
+          "short": "The greeting in the requested or detected language",
           "type": "`$STRING`"
         },
         {
           "name": "ip",
+          "short": "IP address used for the request (if applicable)",
           "type": "`$STRING`"
         }
       ],
