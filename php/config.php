@@ -42,6 +42,7 @@ class HelloAsServiceConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [

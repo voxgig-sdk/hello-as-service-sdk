@@ -28,6 +28,7 @@ module HelloAsServiceConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
