@@ -23,9 +23,8 @@ type GetGreeting struct {
 // GetGreetingLoadMatch is the typed request payload for GetGreeting.LoadTyped.
 type GetGreetingLoadMatch struct {
 	Cc *string `json:"cc,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Hello *string `json:"hello,omitempty"`
 	Ip *string `json:"ip,omitempty"`
+	Lang *string `json:"lang,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

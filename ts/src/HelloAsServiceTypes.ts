@@ -14,8 +14,7 @@ export interface GetGreeting {
 
 export interface GetGreetingLoadMatch {
   cc?: string
-  code?: string
-  hello?: string
   ip?: string
+  lang?: string
 }
 

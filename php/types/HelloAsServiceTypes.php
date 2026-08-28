@@ -25,8 +25,7 @@ class GetGreeting
 class GetGreetingLoadMatch
 {
     public ?string $cc = null;
-    public ?string $code = null;
-    public ?string $hello = null;
     public ?string $ip = null;
+    public ?string $lang = null;
 }
 

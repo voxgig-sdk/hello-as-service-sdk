@@ -25,6 +25,5 @@ class GetGreeting(TypedDict, total=False):
 
 class GetGreetingLoadMatch(TypedDict, total=False):
     cc: str
-    code: str
-    hello: str
     ip: str
+    lang: str

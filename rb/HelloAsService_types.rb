@@ -34,19 +34,15 @@ GetGreeting = Struct.new(
 # @!attribute [rw] cc
 #   @return [String, nil]
 #
-# @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] hello
-#   @return [String, nil]
-#
 # @!attribute [rw] ip
+#   @return [String, nil]
+#
+# @!attribute [rw] lang
 #   @return [String, nil]
 GetGreetingLoadMatch = Struct.new(
   :cc,
-  :code,
-  :hello,
   :ip,
+  :lang,
   keyword_init: true
 )
 
