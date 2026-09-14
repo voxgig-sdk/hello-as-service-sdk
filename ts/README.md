@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service'
+import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service-sdk'
 
 const client = new HelloAsServiceSDK()
 ```
@@ -407,7 +407,7 @@ hello-as-service/
 Import the SDK from the package root:
 
 ```ts
-import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service'
+import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service-sdk'
 ```
 
 ### Entity state

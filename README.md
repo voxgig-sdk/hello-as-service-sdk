@@ -105,7 +105,7 @@ local result, err = client:GetGreeting():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hello-as-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
 | Python | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
 | PHP | `voxgig-sdk/hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/hello-as-service-sdk/go` | `go get github.com/voxgig-sdk/hello-as-service-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:GetGreeting():load()
 ### TypeScript
 
 ```ts
-import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service'
+import { HelloAsServiceSDK } from '@voxgig-sdk/hello-as-service-sdk'
 
 const client = new HelloAsServiceSDK()
 
