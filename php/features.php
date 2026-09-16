@@ -4,7 +4,10 @@ declare(strict_types=1);
 // HelloAsService SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class HelloAsServiceFeatures
@@ -14,8 +17,14 @@ class HelloAsServiceFeatures
         switch ($name) {
             case "base":
                 return new HelloAsServiceBaseFeature();
+            case "ratelimit":
+                return new HelloAsServiceRatelimitFeature();
+            case "retry":
+                return new HelloAsServiceRetryFeature();
             case "test":
                 return new HelloAsServiceTestFeature();
+            case "timeout":
+                return new HelloAsServiceTimeoutFeature();
             default:
                 return new HelloAsServiceBaseFeature();
         }
@@ -31,7 +40,10 @@ class HelloAsServiceFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { HelloAsServiceSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('GetGreetingEntity', async () => {
 
     const live = 'TRUE' === process.env.HELLO_AS_SERVICE_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'get_greeting.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'get_greeting.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"cc","req":false,"short":"Country code detected or used","type":"`$STRING`","index$":0},{"active":true,"name":"code","req":false,"short":"Language code of the returned greeting","type":"`$STRING`","index$":1},{"active":true,"name":"hello","req":false,"short":"The greeting in the requested or detected language","type":"`$STRING`","index$":2},{"active":true,"name":"ip","req":false,"short":"IP address used for the request (if applicable)","type":"`$STRING`","index$":3}],"name":"get_greeting","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"example":"US","kind":"query","name":"cc","orig":"cc","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":"8.8.8.8","kind":"query","name":"ip","orig":"ip","reqd":false,"type":"`$STRING`","index$":1},{"active":true,"example":"fr","kind":"query","name":"lang","orig":"lang","reqd":false,"type":"`$STRING`","index$":2}]},"contract":{"id":"GET /","json":"{\"operationId\":\"getGreeting\",\"parameters\":[{\"description\":\"IP address to determine the user's location and return appropriate greeting\",\"in\":\"query\",\"name\":\"ip\",\"required\":false,\"schema\":{\"example\":\"8.8.8.8\",\"type\":\"string\"}},{\"description\":\"Language code (ISO 639-1) to return greeting in specific language\",\"in\":\"query\",\"name\":\"lang\",\"required\":false,\"schema\":{\"example\":\"fr\",\"type\":\"string\"}},{\"description\":\"Country code (ISO 3166-1 alpha-2) to return greeting for specific country\",\"in\":\"query\",\"name\":\"cc\",\"required\":false,\"schema\":{\"example\":\"US\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"english\":{\"summary\":\"English greeting\",\"value\":{\"cc\":\"US\",\"code\":\"en\",\"hello\":\"Hello\"}},\"french\":{\"summary\":\"French greeting\",\"value\":{\"cc\":\"FR\",\"code\":\"fr\",\"hello\":\"Bonjour\"}},\"spanish\":{\"summary\":\"Spanish greeting\",\"value\":{\"cc\":\"ES\",\"code\":\"es\",\"hello\":\"Hola\"}}},\"schema\":{\"properties\":{\"cc\":{\"description\":\"Country code detected or used\",\"example\":\"US\",\"type\":\"string\"},\"code\":{\"description\":\"Language code of the returned greeting\",\"example\":\"en\",\"type\":\"string\"},\"hello\":{\"description\":\"The greeting in the requested or detected language\",\"example\":\"Hello\",\"type\":\"string\"},\"ip\":{\"description\":\"IP address used for the request (if applicable)\",\"example\":\"8.8.8.8\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with localized greeting\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid parameter\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Server error\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/","segments":[],"select":{"exist":["cc","ip","lang"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"get_greeting","name__orig":"get_greeting","Name":"GetGreeting","name_":"get_greeting","name-":"get-greeting","NAME":"GET_GREETING","index$":0}, {"active":true,"entity":"get_greeting","key$":"BasicGetGreetingFlow","kind":"basic","name":"BasicGetGreetingFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"get_greeting_ref01","srcdatavar":"get_greeting_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-get_greeting_ref01"}}],"index$":0}]}, 'GetGreeting')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID': idmap,
     'HELLO_AS_SERVICE_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.HELLO_AS_SERVICE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['HELLO_AS_SERVICE_TEST_GET_GREETING_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new HelloAsServiceSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.HELLO_AS_SERVICE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

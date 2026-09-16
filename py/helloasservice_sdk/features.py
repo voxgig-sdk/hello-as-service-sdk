@@ -1,12 +1,18 @@
 # HelloAsService SDK feature factory
 
 from helloasservice_sdk.feature.base_feature import HelloAsServiceBaseFeature
+from helloasservice_sdk.feature.ratelimit_feature import HelloAsServiceRatelimitFeature
+from helloasservice_sdk.feature.retry_feature import HelloAsServiceRetryFeature
 from helloasservice_sdk.feature.test_feature import HelloAsServiceTestFeature
+from helloasservice_sdk.feature.timeout_feature import HelloAsServiceTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: HelloAsServiceBaseFeature(),
+    "ratelimit": lambda: HelloAsServiceRatelimitFeature(),
+    "retry": lambda: HelloAsServiceRetryFeature(),
     "test": lambda: HelloAsServiceTestFeature(),
+    "timeout": lambda: HelloAsServiceTimeoutFeature(),
 }
 
 

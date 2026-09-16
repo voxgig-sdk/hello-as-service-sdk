@@ -33,5 +33,139 @@
         "ip": "sa3"
       }
     }
+  },
+  "requests": {
+    "GET /": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGreeting",
+        "parameters": [
+          {
+            "description": "IP address to determine the user's location and return appropriate greeting",
+            "in": "query",
+            "name": "ip",
+            "required": false,
+            "schema": {
+              "example": "8.8.8.8",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Language code (ISO 639-1) to return greeting in specific language",
+            "in": "query",
+            "name": "lang",
+            "required": false,
+            "schema": {
+              "example": "fr",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Country code (ISO 3166-1 alpha-2) to return greeting for specific country",
+            "in": "query",
+            "name": "cc",
+            "required": false,
+            "schema": {
+              "example": "US",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "english": {
+                    "summary": "English greeting",
+                    "value": {
+                      "cc": "US",
+                      "code": "en",
+                      "hello": "Hello"
+                    }
+                  },
+                  "french": {
+                    "summary": "French greeting",
+                    "value": {
+                      "cc": "FR",
+                      "code": "fr",
+                      "hello": "Bonjour"
+                    }
+                  },
+                  "spanish": {
+                    "summary": "Spanish greeting",
+                    "value": {
+                      "cc": "ES",
+                      "code": "es",
+                      "hello": "Hola"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "cc": {
+                      "description": "Country code detected or used",
+                      "example": "US",
+                      "type": "string"
+                    },
+                    "code": {
+                      "description": "Language code of the returned greeting",
+                      "example": "en",
+                      "type": "string"
+                    },
+                    "hello": {
+                      "description": "The greeting in the requested or detected language",
+                      "example": "Hello",
+                      "type": "string"
+                    },
+                    "ip": {
+                      "description": "IP address used for the request (if applicable)",
+                      "example": "8.8.8.8",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with localized greeting"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid parameter",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - Invalid parameters"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Server error",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
