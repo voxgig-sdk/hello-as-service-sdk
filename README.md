@@ -105,12 +105,12 @@ local result, err = client:GetGreeting():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hello-as-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
-| Python | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
-| PHP | `voxgig-sdk/hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hello-as-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/tags) |
+| Python | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/tags) |
+| PHP | `voxgig-sdk/hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/hello-as-service-sdk/go` | `go get github.com/voxgig-sdk/hello-as-service-sdk/go@latest` |
-| Ruby | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
-| Lua | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/releases) |
+| Ruby | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/tags) |
+| Lua | `voxgig-sdk-hello-as-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hello-as-service-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/hello-as-service-sdk/go-cli` | `go install github.com/voxgig-sdk/hello-as-service-sdk/go-cli/cmd/hello-as-service@latest` |
 | Go MCP server | `github.com/voxgig-sdk/hello-as-service-sdk/go-mcp` | `go get github.com/voxgig-sdk/hello-as-service-sdk/go-mcp@latest` |
 

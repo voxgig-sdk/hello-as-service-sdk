@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      get_greeting: {
-      },
-
+        get_greeting: {
+        },
+  
     }
   }
 
