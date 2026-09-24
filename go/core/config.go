@@ -91,23 +91,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "cc",
-						"short": "Country code detected or used",
+						"title": "Cc",
 						"type": "`$STRING`",
+						"short": "Country code detected or used",
 					},
 					map[string]any{
 						"name": "code",
-						"short": "Language code of the returned greeting",
+						"title": "Code",
 						"type": "`$STRING`",
+						"short": "Language code of the returned greeting",
 					},
 					map[string]any{
 						"name": "hello",
-						"short": "The greeting in the requested or detected language",
+						"title": "Hello",
 						"type": "`$STRING`",
+						"short": "The greeting in the requested or detected language",
 					},
 					map[string]any{
 						"name": "ip",
-						"short": "IP address used for the request (if applicable)",
+						"title": "Ip",
 						"type": "`$STRING`",
+						"short": "IP address used for the request (if applicable)",
 					},
 				},
 				"name": "get_greeting",
@@ -117,35 +121,41 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "US",
-											"kind": "query",
-											"name": "cc",
-											"orig": "cc",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "8.8.8.8",
-											"kind": "query",
-											"name": "ip",
-											"orig": "ip",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "fr",
-											"kind": "query",
-											"name": "lang",
-											"orig": "lang",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"segments": []any{},
+								"parts": []any{},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "cc",
+											"orig": "cc",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "US",
+										},
+										map[string]any{
+											"name": "ip",
+											"orig": "ip",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "8.8.8.8",
+										},
+										map[string]any{
+											"name": "lang",
+											"orig": "lang",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "fr",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"cc",
@@ -153,11 +163,6 @@ func MakeConfig() map[string]any {
 										"lang",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{},
 							},
 						},
 					},

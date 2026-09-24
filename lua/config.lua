@@ -87,23 +87,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "cc",
-            ["short"] = "Country code detected or used",
+            ["title"] = "Cc",
             ["type"] = "`$STRING`",
+            ["short"] = "Country code detected or used",
           },
           {
             ["name"] = "code",
-            ["short"] = "Language code of the returned greeting",
+            ["title"] = "Code",
             ["type"] = "`$STRING`",
+            ["short"] = "Language code of the returned greeting",
           },
           {
             ["name"] = "hello",
-            ["short"] = "The greeting in the requested or detected language",
+            ["title"] = "Hello",
             ["type"] = "`$STRING`",
+            ["short"] = "The greeting in the requested or detected language",
           },
           {
             ["name"] = "ip",
-            ["short"] = "IP address used for the request (if applicable)",
+            ["title"] = "Ip",
             ["type"] = "`$STRING`",
+            ["short"] = "IP address used for the request (if applicable)",
           },
         },
         ["name"] = "get_greeting",
@@ -113,35 +117,41 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "US",
-                      ["kind"] = "query",
-                      ["name"] = "cc",
-                      ["orig"] = "cc",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "8.8.8.8",
-                      ["kind"] = "query",
-                      ["name"] = "ip",
-                      ["orig"] = "ip",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "fr",
-                      ["kind"] = "query",
-                      ["name"] = "lang",
-                      ["orig"] = "lang",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["segments"] = {},
+                ["parts"] = {},
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "cc",
+                      ["orig"] = "cc",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "US",
+                    },
+                    {
+                      ["name"] = "ip",
+                      ["orig"] = "ip",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "8.8.8.8",
+                    },
+                    {
+                      ["name"] = "lang",
+                      ["orig"] = "lang",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "fr",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "cc",
@@ -149,11 +159,6 @@ local function make_config()
                     "lang",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {},
               },
             },
           },

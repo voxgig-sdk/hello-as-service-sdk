@@ -1,0 +1,97 @@
+# Entity: get_greeting
+
+main: kit: entity: get_greeting: {
+
+  alias: field: {}
+
+  fields: {
+    cc: {
+      h: "Cc"
+      n: "cc"
+      r: false
+      sh: "Country code detected or used"
+      t: "`$STRING`"
+    }
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "Language code of the returned greeting"
+      t: "`$STRING`"
+    }
+    hello: {
+      h: "Hello"
+      n: "hello"
+      r: false
+      sh: "The greeting in the requested or detected language"
+      t: "`$STRING`"
+    }
+    ip: {
+      h: "Ip"
+      n: "ip"
+      r: false
+      sh: "IP address used for the request (if applicable)"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "get_greeting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "US"
+                k: "query"
+                n: "cc"
+                or: "cc"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8.8.8.8"
+                k: "query"
+                n: "ip"
+                or: "ip"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "fr"
+                k: "query"
+                n: "lang"
+                or: "lang"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/"
+          q: {
+            exist: [
+              "cc"
+              "ip"
+              "lang"
+            ]
+          }
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,7 +1,7 @@
 // Typed models for the HelloAsService SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // GetGreeting is the typed data model for the get_greeting entity.
 type GetGreeting struct {
-	Cc *string `json:"cc,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Hello *string `json:"hello,omitempty"`
-	Ip *string `json:"ip,omitempty"`
 }
 
 // GetGreetingLoadMatch is the typed request payload for GetGreeting.LoadTyped.
