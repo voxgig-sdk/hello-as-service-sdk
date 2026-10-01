@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 HelloAsServiceUtility::setRegistrar(function (HelloAsServiceUtility $u): void {
     $u->clean = [HelloAsServiceClean::class, 'call'];
+    $u->clean_add = [HelloAsServiceClean::class, 'add'];
+    $u->clean_explain = [HelloAsServiceDone::class, 'clean_explain'];
     $u->done = [HelloAsServiceDone::class, 'call'];
     $u->make_error = [HelloAsServiceMakeError::class, 'call'];
     $u->feature_add = [HelloAsServiceFeatureAdd::class, 'call'];

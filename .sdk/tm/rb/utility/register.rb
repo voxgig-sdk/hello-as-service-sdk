@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 HelloAsServiceUtility.registrar = ->(u) {
   u.clean = HelloAsServiceUtilities::Clean
+  u.clean_add = HelloAsServiceUtilities::CleanAdd
+  u.clean_explain = HelloAsServiceUtilities::CleanExplain
   u.done = HelloAsServiceUtilities::Done
   u.make_error = HelloAsServiceUtilities::MakeError
   u.feature_add = HelloAsServiceUtilities::FeatureAdd
