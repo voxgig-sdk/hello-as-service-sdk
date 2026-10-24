@@ -93,6 +93,7 @@ class HelloAsServiceConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -161,6 +162,7 @@ class HelloAsServiceConfig
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'example' => 'US',
+                        'field' => true,
                       ],
                       [
                         'name' => 'ip',
@@ -168,6 +170,7 @@ class HelloAsServiceConfig
                         'type' => '`$STRING`',
                         'kind' => 'query',
                         'example' => '8.8.8.8',
+                        'field' => true,
                       ],
                       [
                         'name' => 'lang',
@@ -178,12 +181,10 @@ class HelloAsServiceConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'cc',
-                      'ip',
-                      'lang',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

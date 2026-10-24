@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -164,6 +165,7 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "US",
+                      "field": True,
                     },
                     {
                       "name": "ip",
@@ -171,6 +173,7 @@ def make_config():
                       "type": "`$STRING`",
                       "kind": "query",
                       "example": "8.8.8.8",
+                      "field": True,
                     },
                     {
                       "name": "lang",
@@ -181,12 +184,10 @@ def make_config():
                     },
                   ],
                 },
-                "select": {
-                  "exist": [
-                    "cc",
-                    "ip",
-                    "lang",
-                  ],
+                "select": {},
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

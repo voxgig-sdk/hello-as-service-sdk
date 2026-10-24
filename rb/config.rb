@@ -79,6 +79,7 @@ module HelloAsServiceConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -147,6 +148,7 @@ module HelloAsServiceConfig
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "US",
+                        "field" => true,
                       },
                       {
                         "name" => "ip",
@@ -154,6 +156,7 @@ module HelloAsServiceConfig
                         "type" => "`$STRING`",
                         "kind" => "query",
                         "example" => "8.8.8.8",
+                        "field" => true,
                       },
                       {
                         "name" => "lang",
@@ -164,12 +167,10 @@ module HelloAsServiceConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "cc",
-                      "ip",
-                      "lang",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

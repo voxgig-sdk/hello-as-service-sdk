@@ -3,5 +3,16 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Country code detected or used",
+      "IP address used for the request (if applicable)",
+      "Language code of the returned greeting",
+      "Production server",
+      "Successful response with localized greeting",
+      "The greeting in the requested or detected language",
+      "This API allows developers to greet visitors in their native language by utilizing their IP address or browser language settings. By making a simple API call, you can receive localized greetings based on the user&#39;s location or language preferences."
+    ]
+  }
 }

@@ -76,12 +76,9 @@ main: kit: entity: get_greeting: {
           }
           m: "GET"
           o: "/"
-          q: {
-            exist: [
-              "cc"
-              "ip"
-              "lang"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           t: {
             req: "`reqdata`"

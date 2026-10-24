@@ -21,10 +21,28 @@ const PLAN = [
             "lang": "fr"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "ip",
             "lang",
             "cc"
+        ],
+        "queryArgs": [
+            {
+                "name": "cc",
+                "wire": "cc"
+            },
+            {
+                "name": "ip",
+                "wire": "ip"
+            },
+            {
+                "name": "lang",
+                "wire": "lang"
+            }
         ],
         "auth": null,
         "status": 200,

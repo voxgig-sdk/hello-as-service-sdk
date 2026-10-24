@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.GetGreeting();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.HelloAsServiceSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.GetGreeting().load({ "cc": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.HELLO_AS_SERVICE_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "cc": { "a": true, "h": "Cc", "n": "cc", "r": false, "sh": "Country code detected or used", "t": "`$STRING`", "key$": "cc", "index$": 0 }, "code": { "a": true, "h": "Code", "n": "code", "r": false, "sh": "Language code of the returned greeting", "t": "`$STRING`", "key$": "code", "index$": 1 }, "hello": { "a": true, "h": "Hello", "n": "hello", "r": false, "sh": "The greeting in the requested or detected language", "t": "`$STRING`", "key$": "hello", "index$": 2 }, "ip": { "a": true, "h": "Ip", "n": "ip", "r": false, "sh": "IP address used for the request (if applicable)", "t": "`$STRING`", "key$": "ip", "index$": 3 } }, "name": "get_greeting", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "US", "k": "query", "n": "cc", "or": "cc", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "8.8.8.8", "k": "query", "n": "ip", "or": "ip", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "fr", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/", "q": { "exist": ["cc", "ip", "lang"] }, "r": {}, "s": [], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "get_greeting", "name__orig": "get_greeting", "Name": "GetGreeting", "name_": "get_greeting", "name-": "get-greeting", "NAME": "GET_GREETING", "index$": 0 }, { "active": true, "entity": "get_greeting", "key$": "BasicGetGreetingFlow", "kind": "basic", "name": "BasicGetGreetingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "get_greeting_ref01", "srcdatavar": "get_greeting_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-get_greeting_ref01" } }], "index$": 0 }] }, 'GetGreeting', { "GET /": { "protocol": "http", "parameters": [{ "name": "ip", "in": "query", "description": "IP address to determine the user's location and return appropriate greeting", "required": false, "schema": { "type": "string", "example": "8.8.8.8" }, "index$": 0 }, { "name": "lang", "in": "query", "description": "Language code (ISO 639-1) to return greeting in specific language", "required": false, "schema": { "type": "string", "example": "fr" }, "index$": 1 }, { "name": "cc", "in": "query", "description": "Country code (ISO 3166-1 alpha-2) to return greeting for specific country", "required": false, "schema": { "type": "string", "example": "US" }, "index$": 2 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "cc": { "a": true, "h": "Cc", "n": "cc", "r": false, "sh": "Country code detected or used", "t": "`$STRING`", "key$": "cc", "index$": 0 }, "code": { "a": true, "h": "Code", "n": "code", "r": false, "sh": "Language code of the returned greeting", "t": "`$STRING`", "key$": "code", "index$": 1 }, "hello": { "a": true, "h": "Hello", "n": "hello", "r": false, "sh": "The greeting in the requested or detected language", "t": "`$STRING`", "key$": "hello", "index$": 2 }, "ip": { "a": true, "h": "Ip", "n": "ip", "r": false, "sh": "IP address used for the request (if applicable)", "t": "`$STRING`", "key$": "ip", "index$": 3 } }, "name": "get_greeting", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "US", "k": "query", "n": "cc", "or": "cc", "r": false, "t": "`$STRING`", "index$": 0 }, { "a": true, "ex": "8.8.8.8", "k": "query", "n": "ip", "or": "ip", "r": false, "t": "`$STRING`", "index$": 1 }, { "a": true, "ex": "fr", "k": "query", "n": "lang", "or": "lang", "r": false, "t": "`$STRING`", "index$": 2 }] }, "k": "http", "m": "GET", "o": "/", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "get_greeting", "name__orig": "get_greeting", "Name": "GetGreeting", "name_": "get_greeting", "name-": "get-greeting", "NAME": "GET_GREETING", "index$": 0 }, { "active": true, "entity": "get_greeting", "key$": "BasicGetGreetingFlow", "kind": "basic", "name": "BasicGetGreetingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "get_greeting_ref01", "srcdatavar": "get_greeting_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-get_greeting_ref01" } }], "index$": 0 }] }, 'GetGreeting', { "GET /": { "protocol": "http", "parameters": [{ "name": "ip", "in": "query", "description": "IP address to determine the user's location and return appropriate greeting", "required": false, "schema": { "type": "string", "example": "8.8.8.8" }, "index$": 0 }, { "name": "lang", "in": "query", "description": "Language code (ISO 639-1) to return greeting in specific language", "required": false, "schema": { "type": "string", "example": "fr" }, "index$": 1 }, { "name": "cc", "in": "query", "description": "Country code (ISO 3166-1 alpha-2) to return greeting for specific country", "required": false, "schema": { "type": "string", "example": "US" }, "index$": 2 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != get_greeting_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

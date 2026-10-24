@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -154,14 +155,16 @@ class Config {
                                         "orig": "cc",
                                         "type": "`$STRING`",
                                         "kind": "query",
-                                        "example": "US"
+                                        "example": "US",
+                                        "field": true
                                     },
                                     {
                                         "name": "ip",
                                         "orig": "ip",
                                         "type": "`$STRING`",
                                         "kind": "query",
-                                        "example": "8.8.8.8"
+                                        "example": "8.8.8.8",
+                                        "field": true
                                     },
                                     {
                                         "name": "lang",
@@ -172,12 +175,10 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "cc",
-                                    "ip",
-                                    "lang"
-                                ]
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
